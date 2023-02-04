@@ -31,8 +31,21 @@ public class HuffmanAlgorithm{
     static PriorityQueue<HuffmanNode> pq  = new PriorityQueue<>();      //Priority Queue to Store the Huffman Nodes. It is used to construct the Huffman Tree
     static HashMap<Character,String> hm = new HashMap<>();              //HashMap to Store the character with their Prefix Codes
     static StringBuilder str = new StringBuilder();                     //Stores the String that is read from the File
-    
-    public static void readFromFile(String fileName){                   //Reads from the file and Converts all the data to a String
+    static StringBuilder str1 = new StringBuilder();
+    public static String readFromFileD(String fileName){                 //Decompression     //Reads from the file and Converts all the data to a String
+        File myFile = new File("test.txt");
+        try {
+            Scanner sc = new Scanner(myFile);
+            while (sc.hasNextLine()){
+                str1.append(sc.nextLine());
+                str1.append("\n");
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return str1.toString();
+    }
+    public static String readFromFileE(String fileName){                 //Compression     //Reads from the file and Converts all the data to a String
         File myFile = new File("test.txt");
         try {
             Scanner sc = new Scanner(myFile);
@@ -42,6 +55,7 @@ public class HuffmanAlgorithm{
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        return str.toString();
     }
     
     public static void initializingHashMap(){
@@ -123,11 +137,24 @@ public class HuffmanAlgorithm{
         
     }
     public static void main(String[] args) {
-        
-        readFromFile("test.txt");
-        initializingHashMap();
-        constructHuffmanTree();
-        createPrefixCodes(root, new StringBuilder());
-        writeToFile("Compressed test.txt");
+        //Compression
+        // readFromFileE("test.txt");
+        // initializingHashMap();
+        // constructHuffmanTree();
+        // createPrefixCodes(root, new StringBuilder());
+        // writeToFile("Compressed test.txt");
+
+
+        //Decompression
+        readFromFileD("Compressed test.txt");
+        String k = str1.toString();
+        try {
+            FileWriter fileWriter = new FileWriter("Decompressed test.txt");
+            fileWriter.write(k);
+
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
