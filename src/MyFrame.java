@@ -36,11 +36,11 @@ public class MyFrame extends JFrame implements ActionListener{
         compress.setFocusable(false);
         compress.addActionListener(this);
 
-        decompress = new JButton("Decompress");
-        decompress.setBounds(400,250,130,50);
-        decompress.setVisible(true);
-        decompress.setFocusable(false);
-        decompress.addActionListener(this);
+        // decompress = new JButton("Decompress");
+        // decompress.setBounds(400,250,130,50);
+        // decompress.setVisible(true);
+        // decompress.setFocusable(false);
+        // decompress.addActionListener(this);
         
         label = new JLabel();
         label.setBackground(new Color(218, 235, 237));
@@ -67,7 +67,7 @@ public class MyFrame extends JFrame implements ActionListener{
         path.setBounds(150,165,200,25);
         layeredPane.add(label,Integer.valueOf(0));
         layeredPane.add(compress,Integer.valueOf(1));
-        layeredPane.add(decompress,Integer.valueOf(1));
+        //layeredPane.add(decompress,Integer.valueOf(1));
         layeredPane.add(selectFile,Integer.valueOf(1));
         layeredPane.add(path,Integer.valueOf(1));
 
@@ -92,9 +92,9 @@ public class MyFrame extends JFrame implements ActionListener{
             new Compression(path.getText());
             JOptionPane.showMessageDialog(null,"The Compression is Done");
         }
-        if (e.getSource() == decompress){
-            new Decompression(path.getText());
-            JOptionPane.showMessageDialog(null,"The Decompression is Done");
-        }
+        // if (e.getSource() == decompress){
+        //     new Decompression(path.getText());
+        //     JOptionPane.showMessageDialog(null,"The Decompression is Done");
+        // }
     }
 }
