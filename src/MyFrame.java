@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MyFrame extends JFrame implements ActionListener{
     
@@ -81,7 +82,8 @@ public class MyFrame extends JFrame implements ActionListener{
         
         if (e.getSource() == selectFile){
             JFileChooser fileChooser = new JFileChooser();
-
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(".txt","txt");
+            fileChooser.setFileFilter(filter);
             int response = fileChooser.showOpenDialog(null);
             if (response == JFileChooser.APPROVE_OPTION){
                 String p = fileChooser.getSelectedFile().getAbsolutePath();
